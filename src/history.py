@@ -8,8 +8,10 @@ class BrowserHistory:
         return self._current
 
     def visit(self, url: str):
-        if self._current != "home":      # only push real pages
+        # DO NOT push "home" into history
+        if self._current != "home":
             self._back_stack.append(self._current)
+
         self._current = url
         self._forward_stack.clear()
 
@@ -26,4 +28,3 @@ class BrowserHistory:
         self._back_stack.append(self._current)
         self._current = self._forward_stack.pop()
         return self._current
-
